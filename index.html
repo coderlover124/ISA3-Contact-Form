@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact Us | ISA 3</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e8f0ff, #f5eaff);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 520px;
+            background: white;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.10);
+        }
+
+        .heading {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .heading h1 {
+            color: #34246b;
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .heading p {
+            color: #777;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #7357d9;
+            box-shadow: 0 0 0 3px rgba(115, 87, 217, 0.12);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #6246cc;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #4930aa;
+        }
+
+        button:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+        }
+
+        #status {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .footer {
+            margin-top: 22px;
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 24px;
+            }
+
+            .heading h1 {
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="heading">
+            <h1>Get in Touch</h1>
+            <p>
+                Have a question or need assistance?
+                Fill out the form below and contact us.
+            </p>
+        </div>
+
+        <form id="contactForm">
+
+            <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" maxlength="100"
+                    autocomplete="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email address" maxlength="254"
+                    autocomplete="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" maxlength="20"
+                    autocomplete="tel">
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Subject *</label>
+                <select id="subject" name="subject" required>
+                    <option value="">Select a subject</option>
+                    <option value="General Inquiry">General Inquiry</option>
+                    <option value="Technical Support">Technical Support</option>
+                    <option value="Feedback">Feedback</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Your Message *</label>
+                <textarea id="message" name="message" placeholder="Write your message here..." maxlength="5000"
+                    required></textarea>
+            </div>
+
+            <button type="submit" id="submitBtn">
+                Submit Message
+            </button>
+
+            <p id="status" role="status" aria-live="polite"></p>
+
+        </form>
+
+        <div class="footer">
+            ISA 3 Project | Contact Form Website
+        </div>
+
+    </div>
+
+    <script>
+        const form = document.getElementById("contactForm");
+        const statusMessage = document.getElementById("status");
+        const submitButton = document.getElementById("submitBtn");
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            statusMessage.textContent =
+                "Your form looks valid. The backend is not connected yet.";
+
+            submitButton.disabled = true;
+
+            setTimeout(function () {
+                submitButton.disabled = false;
+            }, 1000);
+        });
+    </script>
+
+</body>
+
+</html>
